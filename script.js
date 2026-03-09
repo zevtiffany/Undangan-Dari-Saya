@@ -64,7 +64,7 @@ function sendToWhatsApp() {
     const phoneNumber = "6285204575882"; // Nomor WA tujuan yang di-request user
 
     // Construct the message
-    const message = `Halo! 👋 aku mau banget nih diajakin ${state.activity}.\n\n📅 Tanggal: ${state.date}\n⏰ Jam: ${state.time}\n📍 Lokasi: ${state.location}\n\nCan't wait! ✨`;
+    const message = `Halo! aku mau banget nih diajakin ${state.activity}.\n\nTanggal: ${state.date}\nJam: ${state.time}\nLokasi: ${state.location}\n\nCan't wait!`;
 
     // URL Encode the message
     const encodedMessage = encodeURIComponent(message);
