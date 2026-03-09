@@ -26,9 +26,16 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
     position: relative;
-    padding: 1rem;
+    padding: 2rem 1rem;
+    /* Added top/bottom padding to ensure content isn't flush against the edges when scrolling */
+}
+
+/* Ensure html and body can scroll properly on iOS */
+html {
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 /* Animated Gradient Background */
@@ -38,22 +45,28 @@ body {
     left: -50%;
     width: 200%;
     height: 200%;
-    background: linear-gradient(
-        45deg,
-        var(--bg-grad-1),
-        var(--bg-grad-2),
-        var(--bg-grad-3),
-        var(--bg-grad-4)
-    );
+    background: linear-gradient(45deg,
+            var(--bg-grad-1),
+            var(--bg-grad-2),
+            var(--bg-grad-3),
+            var(--bg-grad-4));
     background-size: 400% 400%;
     animation: gradientShift 15s ease infinite;
     z-index: -1;
 }
 
 @keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 /* App Container */
@@ -61,10 +74,12 @@ body {
     width: 100%;
     max-width: 480px;
     position: relative;
-    overflow: hidden;
+    /* Removed overflow: hidden so content inside doesn't clip if it gets too large, or if it does, handle it gracefully */
     border-radius: 24px;
     padding: 2.5rem 2rem;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    margin: auto;
+    /* Helps with centering when flex items overflow */
 }
 
 .glass-panel {
@@ -89,8 +104,15 @@ body {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Typography */
@@ -229,7 +251,10 @@ p {
 .option-card::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; width: 4px; height: 100%;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
     background: var(--primary);
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -238,7 +263,7 @@ p {
 .option-card:hover {
     background: var(--card-hover-bg);
     transform: translateX(5px);
-    border-color: rgba(255,255,255,0.3);
+    border-color: rgba(255, 255, 255, 0.3);
 }
 
 .option-card:hover::before {
@@ -308,7 +333,7 @@ p {
     outline: none;
     transition: all 0.3s ease;
     /* To style date/time pickers nicely in some browsers */
-    color-scheme: dark; 
+    color-scheme: dark;
 }
 
 .input-wrapper input:focus {
@@ -358,8 +383,15 @@ p {
 }
 
 @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
 }
 
 .pulse {
@@ -367,8 +399,15 @@ p {
 }
 
 @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: .7; }
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: .7;
+    }
 }
 
 @media (max-width: 480px) {
@@ -376,7 +415,12 @@ p {
         padding: 2rem 1.5rem;
         border-radius: 20px;
     }
-    
-    h1 { font-size: 2rem; }
-    h2 { font-size: 1.5rem; }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
 }
