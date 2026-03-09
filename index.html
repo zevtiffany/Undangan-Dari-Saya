@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Spesial Buat Kamu</title>
+    <!-- Google Fonts: Plus Jakarta Sans for a modern premium look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="background-animation"></div>
+
+    <main class="app-container glass-panel">
+
+        <!-- Step 1: Greeting -->
+        <section id="step-1" class="step active">
+            <div class="icon-wrapper bounce">
+                <i data-lucide="sparkles" class="primary-icon"></i>
+            </div>
+            <h1>Heii! 👋</h1>
+            <p>Aku kepikiran seru banget kalau kita bisa ngobrol dan quality time bareng. Mau ngopi atau belajar bareng?
+            </p>
+            <button class="btn-primary" onclick="nextStep(2)">
+                Mau banget!
+                <i data-lucide="arrow-right"></i>
+            </button>
+        </section>
+
+        <!-- Step 2: Selection -->
+        <section id="step-2" class="step">
+            <button class="btn-back" onclick="prevStep(1)"><i data-lucide="arrow-left"></i> Kembali</button>
+            <div class="icon-wrapper">
+                <i data-lucide="hand-heart" class="primary-icon"></i>
+            </div>
+            <h2>Mau pilih yang mana?</h2>
+
+            <div class="options-grid">
+                <div class="option-card" onclick="selectActivity('Ngopi Bareng')">
+                    <div class="card-icon"><i data-lucide="coffee"></i></div>
+                    <h3>Ngopi Bareng</h3>
+                    <p>Ngobrol seru sambil ngopi bareng. Ayo ketemuan di cafe pilihan kamu, santai-santai aja.</p>
+                </div>
+
+                <div class="option-card" onclick="selectActivity('Nugas Bareng')">
+                    <div class="card-icon"><i data-lucide="book-open"></i></div>
+                    <h3>Nugas Bareng</h3>
+                    <p>Ngobrol sambil nugas di cafe. Kalo ini nugas bareng, ngobrol, dan menikmati suasana asik.</p>
+                </div>
+
+                <div class="option-card" onclick="selectActivity('Jalan-jalan')">
+                    <div class="card-icon"><i data-lucide="footprints"></i></div>
+                    <h3>Jalan-jalan</h3>
+                    <p>Mencari angin segar dan pengalaman baru. Yuk muter-muter santai menikmati suasana.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 3: DateTime Selection -->
+        <section id="step-3" class="step">
+            <button class="btn-back" onclick="prevStep(2)"><i data-lucide="arrow-left"></i> Kembali</button>
+            <div class="icon-wrapper">
+                <i data-lucide="calendar-clock" class="primary-icon"></i>
+            </div>
+            <h2>Waktu & Lokasi</h2>
+            <p id="activity-label">Kapan dan dimana kita janjian?</p>
+
+            <div class="form-group">
+                <label for="date-input">Tanggal</label>
+                <div class="input-wrapper">
+                    <i data-lucide="calendar"></i>
+                    <input type="date" id="date-input" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="time-input">Waktu</label>
+                <div class="input-wrapper">
+                    <i data-lucide="clock"></i>
+                    <input type="time" id="time-input" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="location-input">Lokasi</label>
+                <div class="input-wrapper">
+                    <i data-lucide="map-pin"></i>
+                    <input type="text" id="location-input" placeholder="Mau kemana nih?" required>
+                </div>
+            </div>
+
+            <button class="btn-primary" onclick="confirmSelection()">
+                Lanjut
+                <i data-lucide="check"></i>
+            </button>
+        </section>
+
+        <!-- Step 4: Confirmation -->
+        <section id="step-4" class="step">
+            <button class="btn-back" onclick="prevStep(3)"><i data-lucide="arrow-left"></i> Kembali</button>
+            <div class="icon-wrapper pulse">
+                <i data-lucide="send" class="primary-icon"></i>
+            </div>
+            <h2>Yay, Asikk! 🎉</h2>
+            <div class="summary-box">
+                <div class="summary-item">
+                    <i data-lucide="activity"></i>
+                    <div>
+                        <span class="label">Aktivitas</span>
+                        <strong id="summary-activity">-</strong>
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <i data-lucide="calendar"></i>
+                    <div>
+                        <span class="label">Tanggal</span>
+                        <strong id="summary-date">-</strong>
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <i data-lucide="clock"></i>
+                    <div>
+                        <span class="label">Waktu</span>
+                        <strong id="summary-time">-</strong>
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <i data-lucide="map-pin"></i>
+                    <div>
+                        <span class="label">Lokasi</span>
+                        <strong id="summary-location">-</strong>
+                    </div>
+                </div>
+            </div>
+            <p>Klik tombol di bawah untuk ngirim konfirmasinya ke WhatsApp aku ya!</p>
+            <button class="btn-whatsapp" onclick="sendToWhatsApp()">
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round" class="wa-icon">
+                    <path
+                        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                    </path>
+                </svg>
+                Kirim ke WhatsApp
+            </button>
+        </section>
+
+    </main>
+
+    <!-- Custom Script -->
+    <script src="script.js"></script>
+</body>
+
+</html>
