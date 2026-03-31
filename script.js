@@ -61,7 +61,7 @@ function confirmSelection() {
 
 // Step 4 Action (WhatsApp Redirect)
 function sendToWhatsApp() {
-    const phoneNumber = "6285204575882"; // Nomor WA tujuan yang di-request user
+    const phoneNumber = "6282142720110"; // Nomor WA tujuan yang di-request user
 
     // Construct the message
     const message = `Halo! aku mau banget nih diajakin ${state.activity}.\n\nTanggal: ${state.date}\nJam: ${state.time}\nLokasi: ${state.location}\n\nCan't wait!`;
@@ -70,7 +70,7 @@ function sendToWhatsApp() {
     const encodedMessage = encodeURIComponent(message);
 
     // Generate WhatsApp link (using api.whatsapp.com for better cross-device & iOS compatibility)
-    const whatsappURL = `https://api.whatsapp.com/send?phone=${6282142720110}&text=${encodedMessage}`;
+    const whatsappURL = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
 
     // Open in new tab, or same tab on mobile to ensure deep link works
     if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
