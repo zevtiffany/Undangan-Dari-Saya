@@ -70,7 +70,7 @@ function sendToWhatsApp() {
     const encodedMessage = encodeURIComponent(message);
 
     // Generate WhatsApp link (using api.whatsapp.com for better cross-device & iOS compatibility)
-    const whatsappURL = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
+    const whatsappURL = `https://api.whatsapp.com/send?phone=${6282142720110}&text=${encodedMessage}`;
 
     // Open in new tab, or same tab on mobile to ensure deep link works
     if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
