@@ -61,7 +61,7 @@ function confirmSelection() {
 
 // Step 4 Action (WhatsApp Redirect)
 function sendToWhatsApp() {
-    const phoneNumber = "6282142720110"; // Nomor WA tujuan yang di-request user
+    const phoneNumber = "6285204575882"; // Nomor WA tujuan yang di-request user
 
     // Construct the message
     const message = `Halo! aku mau banget nih diajakin ${state.activity}.\n\nTanggal: ${state.date}\nJam: ${state.time}\nLokasi: ${state.location}\n\nCan't wait!`;
